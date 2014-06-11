@@ -24,7 +24,7 @@ using namespace std;
 int main(void){
 	int k,ans=0;
 	cin>>k; //read in the number of buttons
-	for(int i=3;i<sqrt(k);i++){
+	for(int i=3;i<=sqrt(k);i++){
 		if(k%i==0){ //find the first number that evenly divides k that is greater than or equal to 3 and less than the square root of k
 			cout<<i-1<<endl;
 			return 0;
