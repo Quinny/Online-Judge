@@ -28,4 +28,6 @@ int main(void){
 		cout<<"-1";
 	}
 	cout<<endl;
+
+	return 0;
 }

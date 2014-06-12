@@ -37,6 +37,8 @@ int main(void){
 	for(i=n;prodDigits(i)!=n;i++); //otherwise go until the number is found
 
 	cout<<i<<endl;
+	
+	return 0;
 
 }
 

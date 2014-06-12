@@ -25,4 +25,6 @@ int main(void){
 	int sum=(n*(n+1))/2;
 
 	cout<<(sum%2==0?"black":"grimy")<<endl;
+
+	return 0;
 }

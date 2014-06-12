@@ -23,4 +23,6 @@ int main(void){
 
 	for(int i=v.size()-1;i>=0;i--)
 		cout<<fixed<<setprecision(4)<<sqrt(v[i])<<endl; //loop through backwards and output their square roots
+
+	return 0;
 }
