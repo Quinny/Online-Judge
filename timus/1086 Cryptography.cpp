@@ -16,22 +16,21 @@ bool isPrime(int); //given an integer, this function will return true if it is p
 int nthPrime(int); //given an integer n, this function will find the nth prime number
 
 int main(void){
-	int n,a;
+	int ans[15000];
+	ans[0]=2;
+	int n,a,sz=1;
+	for(int i=3;sz<15000;i+=2){
+		if(isPrime(i)){
+			ans[sz]=i;
+			sz++;
+		}
+	}
 	cin>>n;
 	for(int i=0;i<n;i++){
 		cin>>a;
-		cout<<nthPrime(a)<<endl;
+		cout<<(ans[a-1])<<endl;
 	}
 	return 0;
-}
-
-int nthPrime(int n){
-	int count=0;
-	while(n!=0){
-		count++;
-		if(isPrime(count))n--; //everytime a prime number is found subtract 1 from n
-	}
-	return count;
 }
 
 bool isPrime(int x){
