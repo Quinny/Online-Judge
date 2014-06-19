@@ -14,28 +14,31 @@ Write a program which for a given value of n finds the largest number among the 
 
 
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
 
 int main(void){
-	int n=100000; //the maxiumum value of n
-	int a[n]; 
-	a[0]=0; //initial values 
-	a[1]=1;
-	for(int i=0;i<n/2;i++){
-		a[2*i]=a[i]; //follow the pattern provided and fill in the sequence
-		a[2*i+1]=a[i]+a[i+1];
-	}
+	int n=100000;
+	int ans[n];
+	int dp[n];
+	dp[0]=0;ans[0]=0;
+	dp[1]=1;ans[1]=1;
 
-	int c,ans;
-	while(cin>>c,c!=0){
-		for(int i=0;i<c;i+=2){
-			ans=max(a[i],a[i+1]); //go through the first c values keeping track of the largest one
+	for(int i=2;i<n;i++){
+		if(i%2==1){
+			dp[i]=dp[i/2]+dp[i/2+1];
+			ans[i]=max(dp[i],ans[i-1]);
 		}
-		cout<<ans<<endl;
+		else{
+			dp[i]=dp[i/2];
+			ans[i]=ans[i-1];
+		}
 	}
-	return 0;
+	while(cin>>n,n!=0){
+		cout<<ans[n]<<endl;
+	}
 }
 
 
