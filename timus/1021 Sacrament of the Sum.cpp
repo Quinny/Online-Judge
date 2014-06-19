@@ -1,35 +1,39 @@
 /*
 
-Sacrament of the Sum
+I had orginally tried using a n^2 method where i checked each number entered against each other but found that took to long, so I used this approach
 
-Your program should decide, if it is possible to choose from two lists of integers such two numbers that their sum would
-be equal to 10 000.
+since the numbers range from -32767 to 32767, we can bring them into range to add to an array of size 65535 by adding 32767
 
+Then, when reading in the second list of numbers, we can subtract the value of the number from 10000+32767 (42767), to see if the corresponding number has been
+entered in the first list.  If it has then we have found a match.
 
 */
 
 
-#include <iostream>
 
+#include <iostream>
+#include <cstring>
 using namespace std;
 
 int main(void){
-	int x,y,t;
-	cin>>x; //get the length of the first list
-	int a[x];
-	for(int i=0;i<x;i++)
-		cin>>a[i]; //read in each value
+	bool entered[65535],found=false; 
+	memset(entered,false,sizeof(entered));
+	int n;
+	cin>>n;
+	for(int i=0,tmp;i<n;i++){
+		cin>>tmp;
+		entered[tmp+32767]=true;
+	}
+	cin>>n;
 
-	cin>>y; //get the length of the second list
-	for(int i=0;i<y;i++){
-		cin>>t;
-		for(int c=0;c<x;c++){
-			if(t+a[c]==10000){ //check if any of the values in the second list add to be 10 000
-				cout<<"YES"<<endl;
-				return 0;
-			}
+	for(int i=0,tmp;i<n;i++){
+		cin>>tmp;
+		tmp=42767-tmp;
+		if(tmp>=0 && tmp<65535 && entered[tmp]){
+			found=true;
+			break;
 		}
 	}
-	cout<<"NO"<<endl; //if not then print no
-	return 0;
+	if(found)cout<<"YES"<<endl;
+	else cout<<"NO"<<endl;
 }

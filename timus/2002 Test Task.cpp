@@ -24,9 +24,7 @@ int main(void){
 				users[p1]=make_pair(p2,0);
 				cout<<"success: new user added"<<endl;
 			}
-			
 			else cout<<"fail: user already exists"<<endl;
-			
 		}
 		
 		
