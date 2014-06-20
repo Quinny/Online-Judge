@@ -44,19 +44,6 @@ int knight(int n,int x,int y){
 }
 
 int bishop(int n,int x,int y){
-	/*int ans=0,tx=x,ty=y;
-	int dx[]={1,-1,1,-1};
-	int dy[]={1,1,-1,-1};
-
-	for(int i=0;i<4;i++){
-		tx=x+dx[i];
-		ty=y+dy[i];
-		while((tx>0 && tx<=n) && (ty>0 && ty<=n)){
-			tx+=dx[i];
-			ty+=dy[i];
-			ans++;
-		}
-	}*/
 
 	int ans=0;
 
