@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -43,7 +44,7 @@ int knight(int n,int x,int y){
 }
 
 int bishop(int n,int x,int y){
-	int ans=0,tx=x,ty=y;
+	/*int ans=0,tx=x,ty=y;
 	int dx[]={1,-1,1,-1};
 	int dy[]={1,1,-1,-1};
 
@@ -55,23 +56,19 @@ int bishop(int n,int x,int y){
 			ty+=dy[i];
 			ans++;
 		}
-	}
+	}*/
+
+	int ans=0;
+
+	ans+=min(n-y,x-1); //up and right
+	ans+=min(y-1,x-1); //up and left
+	ans+=min(n-y,n-x); //down and right
+	ans+=min(n-x,y-1); //down and left
 	return ans;
 }
 
 int rook(int n, int x,int y){
-	int ans=0,tx,ty;
-	int dx[]={1,-1,0,0};
-	int dy[]={0,0,1,-1};
-	for(int i=0;i<4;i++){
-		tx=x+dx[i];
-		ty=y+dy[i];
-		while((tx>0 && tx<=n) && (ty>0 && ty<=n)){
-			tx+=dx[i];
-			ty+=dy[i];
-			ans++;
-		}
-	}
+	return 2*(n-1);
 }
 
 int queen(int n,int x,int y){
