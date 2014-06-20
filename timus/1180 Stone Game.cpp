@@ -9,21 +9,18 @@ Nikifor who takes the last stone wins. You are to write a program that determine
 */
 
 #include <iostream>
-#include <string>
 
 using namespace std;
 
 int main(void){
-	char n[251];
-	int ans;
-	cin>>n;
+	char tmp;
+	int ans=0;
+		
+	while(cin>>tmp)
+		ans+=tmp-'0';
 
-	for(int i=0;i<strlen(n);i++)
-		ans=(ans*10+n[i]-'0')%3;
-
-
-	if(ans==0) cout<<"2"<<endl;
-	else cout<<"1"<<endl<<ans<<endl;
+	if(ans%3==0) cout<<"2"<<endl; //if the sum of the digits is divisible by 3 then the number must be divisble by 3
+	else cout<<"1"<<endl<<(ans%3)<<endl;
 
 	return 0;
 }

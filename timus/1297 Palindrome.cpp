@@ -1,35 +1,55 @@
+/*
+
+http://leetcode.com/2011/11/longest-palindromic-substring-part-i.html
+
+*/
+
 #include <iostream>
 #include <string>
-#include <algorithm>
 
 using namespace std;
 
-bool isPalindrome(string);
-
 int main(void){
-	string s,ans;
-	int len=0;
+	string s;
 	cin>>s;
-	if(isPalindrome(s)){
-		cout<<s<<endl;
-		return 0;
+	char f=s[0];
+	int n=s.size();
+	int maxLen=0,start=0;
+	bool dp[1001][1001];
+
+	memset(dp,false,sizeof(dp)); //set everything to false
+
+	for(int i=0;i<n;i++){
+		dp[i][i]=true; //populate the diagonals with true
 	}
-	for(int i=0;i<s.size();i++){
-		for(int x=0;x<s.size();x++){
-			string tmp=s.substr(i,x);
-			if(isPalindrome(tmp) && tmp.size()>len){
-				len=tmp.size();
-				ans=tmp;
+
+	for(int i=0;i<n-1;i++){
+		if(s[i]==s[i+1]){
+			dp[i][i+1]=true; //find all of the length 2 palindromes
+			if(2>maxLen){ 
+				start=i;
+				maxLen=2;
 			}
 		}
 	}
-	cout<<ans<<endl;
 
-}
+	for(int len=3;len<=n;len++){ //start at length 3
+		for(int i=0;i<n-len+1;i++){
+			int j=len+i-1;
+			if(s[i]==s[j] && dp[i+1][j-1]){ //if the characters are the same and the one between them are also the same then it must be a palindrome
+				dp[i][j]=true;
+				if(len>maxLen){ //length check because the question wanted the first example if there was more than 1
+					start=i;
+					maxLen=len;
+				}
+			}
+		}
+	}
 
-bool isPalindrome(string s){
-	string s2;
-	for(int i=s.size()-1;i>=0;i--) s2+=s[i];
+	if(maxLen==0){ //if no palindromes were found return the first character
+		cout<<f<<endl;
+		return 0;
+	}
 
-	return s2==s;;
+	cout<<(s.substr(start,maxLen))<<endl;
 }
