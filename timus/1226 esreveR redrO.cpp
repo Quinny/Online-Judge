@@ -15,11 +15,9 @@ int main(void){
 
 		if(!isalnum(lastChar) && lastChar!='"'){
 			tmp=reverse(tmp,tmp.size()-2);
-			//reverse(tmp.begin(),tmp.end()-1);
 		}
 		else{
 			tmp=reverse(tmp,tmp.size()-1);
-			//reverse(tmp.begin(),tmp.end());
 		}
 
 		cout<<tmp<<" ";
