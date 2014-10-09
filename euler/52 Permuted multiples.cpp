@@ -1,5 +1,4 @@
 #include <iostream>
-#include <algorithm>
 
 bool isPermutation(int, int);
 
