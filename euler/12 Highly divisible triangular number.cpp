@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int numDivsors(int);
+int numDivsors(long long);
 
 int main(void){
 
@@ -13,7 +13,7 @@ int main(void){
 	return 0;
 }
 
-int numDivsors(int n){
+int numDivsors(long long n){
 	int ans=0;
 	for(int i=1;i*i<n;i++){
 		if(n%i==0) ans+=2;
