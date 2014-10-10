@@ -37,6 +37,7 @@ int main(void){
 		sum = 0;
 		terms = 0;
 	}
+
 	std::cout<<n<<std::endl;
 }
 

@@ -22,7 +22,7 @@ int main(void){
 	}
 
 	cout<<(i-1)<<endl;
-
+	return 0;
 }
 
 void handleMultiples(bool flags[],int prime){
@@ -32,6 +32,5 @@ void handleMultiples(bool flags[],int prime){
 int nextPrime(bool flags[],int prime){
 	prime++;
 	while(!flags[prime]) prime++;
-
 	return prime;
 }

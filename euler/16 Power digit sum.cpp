@@ -5,7 +5,6 @@ using namespace std;
 string addBig(string,string);
 
 int main(void){
-
 	string n="2";
 	int ans=0;
 
@@ -21,7 +20,6 @@ int main(void){
 }
 
 string addBig(string n,string m){
-
 	int length=n.length();
 
 	if(length>m.length()){
@@ -30,13 +28,10 @@ string addBig(string n,string m){
 	}
 
 	int carry=0;
-
 	string ans="";
-
+	
 	for(int i=length-1;i>=0;i--){
-
 		int val=(n[i]-'0')+(m[i]-'0')+carry;
-
 		if(val>9){
 			ans=to_string(val%10)+ans;
 			carry=1;
@@ -45,12 +40,10 @@ string addBig(string n,string m){
 			ans=to_string(val)+ans;
 			carry=0;
 		}
-
 	}
 
 	if(carry)
 		ans="1"+ans;
 
 	return ans;
-
 }

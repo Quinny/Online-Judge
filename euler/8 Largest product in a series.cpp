@@ -6,8 +6,6 @@ using namespace std;
 long long largestProd(string);
 
 int main(void){
-
-
 	string series="73167176531330624919225119674426574742355349194934"
 				"96983520312774506326239578318016984801869478851843"
 				"85861560789112949495459501737958331952853208805511" 
@@ -36,7 +34,6 @@ int main(void){
 }
 
 long long largestProd(string series){
-
 	long long max=1;
 	long long cur=1;
 	int terms=0;
@@ -45,19 +42,18 @@ long long largestProd(string series){
 		int val=series[i]-'0';
 
 		if(val!=0){
-			if(terms==13){
+			if(terms==13)
 				cur/= series[i-13]-'0';
-			}
+
 			else
 				terms++;
-
+			
 			cur*=val;
 		}
 		else{
 			terms=0;
 			cur=1;
 		}
-
 		if(cur>max) max=cur;
 	}
 

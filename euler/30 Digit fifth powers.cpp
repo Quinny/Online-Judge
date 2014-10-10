@@ -11,7 +11,6 @@ int main(void){
 	}
 	
 	std::cout<<ans<<std::endl;
-
 	return 0;	
 }
 

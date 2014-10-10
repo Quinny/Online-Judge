@@ -19,9 +19,7 @@ int main(void){
 	flags[0]=false;flags[1]=false;
 
 	for(int i=0;i<sqrt(MAX);i++){
-
 		handleMultiples(flags,prime);
-
 		prime=nextPrime(flags,prime);
 	}
 
@@ -36,15 +34,12 @@ int main(void){
 
 
 void handleMultiples(bool flags[],int n){
-	
 	for(int i=n*n;i<MAX;i+=n) flags[i]=false;
 }
 
 int nextPrime(bool flags[],int prime){
 	prime++;
-
 	while(!flags[prime]) prime++;
-
 	return prime;
 }
 

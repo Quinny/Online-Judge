@@ -22,12 +22,10 @@ int main(void) {
 
 
 void maxSum(vector<int> tree,int i,int sum,int level,int* max){
-
 	if(i > tree.size())
 		return;
 
 	sum+=tree[i];
-
 	if(sum > (*max))
 		(*max)=sum;
 

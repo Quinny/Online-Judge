@@ -5,7 +5,6 @@
 using namespace std;
 
 int main(void){
-
 	long grid[SIZE+1][SIZE+1];
 
 	for(int i=0;i<SIZE;i++){

@@ -1,12 +1,10 @@
 #include <iostream>
-#include <cmath>
 
 using namespace std;
 
 int largestPrimeFactor(long);
 
 int main(void){
-
 
 	cout<<(largestPrimeFactor(600851475143))<<endl;
 

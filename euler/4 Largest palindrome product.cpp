@@ -5,7 +5,6 @@ using namespace std;
 bool isPalindrome(int);
 
 int main(void){
-
 	int biggest=0;
 
 	for(int i=999;i>=100;i--){
@@ -13,7 +12,6 @@ int main(void){
 			if(isPalindrome(i*j) && (i*j) > biggest) biggest=i*j;
 		}
 	}
-
 	cout<<biggest<<endl;
 
 	return 0;
@@ -21,12 +19,11 @@ int main(void){
 
 
 bool isPalindrome(int n){
-	string s=to_string(n);
-	int length=s.length();
-
-	for(int i=0;i<s.length()/2;i++){
-		if(s[i]!=s[length-i-1]) return false;
+	int tmp=n;
+	int ans=0;
+	while(tmp>0){
+		ans=(ans*10)+(tmp%10);
+		tmp/=10;
 	}
-	return true;
-
+	return n == ans;
 }

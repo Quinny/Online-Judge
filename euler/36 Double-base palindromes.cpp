@@ -15,7 +15,6 @@ int main(void){
 	return 0;
 }
 
-
 bool isPalindromeBit(int n){
 	int tmp=n;
 	int m=0;
@@ -28,11 +27,11 @@ bool isPalindromeBit(int n){
 }
 
 bool isPalindrome(int n){
-	std::string s=std::to_string(n);
-	int len=s.length();
-	for(int i=0;i<len/2;i++){
-		if(s[i] != s[len-i-1])
-			return false;
+	int tmp=n;
+	int ans=0;
+	while(tmp>0){
+		ans=(ans*10)+(tmp%10);
+		tmp/=10;
 	}
-	return true;
+	return ans == n;
 }
