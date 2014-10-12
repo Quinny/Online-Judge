@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#define HEIGHT 15
+#define HEIGHT 100
 
 using namespace std;
 
