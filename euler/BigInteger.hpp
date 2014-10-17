@@ -24,14 +24,16 @@ class BigInteger{
 		/*-------------------------------
 		 * Constructors
 		 *-------------------------------*/
-		BigInteger(std::string s) : value_(s) {};
-		BigInteger(long long n) : value_(std::to_string(n)) {}; 			// Keep the value as long long to prevent narrowing
+		BigInteger(std::string const& s) : value_(s) {};
+		BigInteger(long long const& n) : value_(std::to_string(n)) {}; 		// Keep the value as long long to prevent narrowing
 		BigInteger() : value_("0") {};										// Default 0 value
 
 		/*-------------------------------
 		 * Utility
 		 *-------------------------------*/
 		int length(){ return value_.length(); }
+		bool isPalindrome();					// This is not really nessesary, but its nice for euler questions
+		BigInteger reverse();
 
 		/*-------------------------------
 		 * Conversions
@@ -48,14 +50,17 @@ class BigInteger{
 		//addition functions
 		BigInteger add(BigInteger);
 		BigInteger add(std::string);
-		BigInteger add(long long);					// Again, prevent narrowing
+		BigInteger add(long long const&);			// Again, prevent narrowing
 
 		//multiplication functions
 		BigInteger multiply(BigInteger);
 		BigInteger multiply(std::string);
-		BigInteger multiply(long long);
+		BigInteger multiply(long long const&);
 
 		BigInteger oneDigMult(std::string, char);
+
+		bool equals(std::string const&);
+		bool equals(BigInteger const&);
 
 
 	public:
@@ -73,6 +78,9 @@ class BigInteger{
 		void operator *= (mult_type x){ value_ = multiply(x).value_; }
 
 		char operator [] (int i){ return value_[i]; }
+
+		template<typename compare_type>
+		bool operator == (compare_type const& x){ return equals(x); }
 
 };
 
@@ -107,7 +115,7 @@ BigInteger BigInteger::add(BigInteger b){
 	return add(b.toString());
 }
 
-BigInteger BigInteger::add(long long n){
+BigInteger BigInteger::add(long long const& n){
 	return add(std::to_string(n));
 }
 
@@ -145,10 +153,39 @@ BigInteger BigInteger::multiply(BigInteger b){
 	return multiply(b.value_);
 }
 
-BigInteger BigInteger::multiply(long long x){
+BigInteger BigInteger::multiply(long long const& x){
 	return multiply(std::to_string(x));
 }
 
+/*-------------------------------
+ * Operators
+ *-------------------------------*/
+
+bool BigInteger::equals(std::string const& s){
+	return value_ == s;
+}
+
+bool BigInteger::equals(BigInteger const& b){
+	return equals(b.value_);
+}
+
+/*-------------------------------
+ * Utility
+ *-------------------------------*/
+
+bool BigInteger::isPalindrome(){
+	int len = length();
+	for(int i = 0; i < len/2; i++){
+		if(value_[i] != value_[len - i - 1]) return false;
+	}
+	return true;
+}
+
+BigInteger BigInteger::reverse(){
+	std::string tmp = value_;
+	std::reverse(tmp.begin(),tmp.end());
+	return BigInteger(tmp);
+}
 
 //ifndef QP_BIG_INT_H__
 #endif
