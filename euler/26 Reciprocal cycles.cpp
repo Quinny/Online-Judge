@@ -6,7 +6,7 @@ int getCycleLength(int);
 int main(void){
 	int max = 0;
 	int d = 0;
-	for(int i = 1000; i > 0; i--){
+	for(int i = MAX; i > 0; i--){
 		if(max > i) break;
 		int tmp = getCycleLength(i);
 		if(tmp > max){
