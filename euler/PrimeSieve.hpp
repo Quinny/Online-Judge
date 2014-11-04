@@ -32,6 +32,7 @@ class PrimeSieve{
 		int primeAfter(int);
 		int nthPrime(int);
 		bool isPrime(int n){ return primes_[n]; }
+		int size(){ return size_; }
 
 		bool operator [] (int i) { return primes_[i]; }
 
