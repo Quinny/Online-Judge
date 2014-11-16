@@ -81,6 +81,8 @@ class BigInteger{
 
 		template<typename compare_type>
 		bool operator == (compare_type const& x){ return equals(x); }
+		template<typename compare_type>
+		bool operator != (compare_type const& x){ return !equals(x); }
 
 };
 
