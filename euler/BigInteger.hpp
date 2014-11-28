@@ -25,13 +25,14 @@ class BigInteger{
 		 * Constructors
 		 *-------------------------------*/
 		BigInteger(std::string const& s) : value_(s) {};
-		BigInteger(long long const& n) : value_(std::to_string(n)) {}; 		// Keep the value as long long to prevent narrowing
-		BigInteger() : value_("0") {};										// Default 0 value
+		BigInteger(const long long n) : value_(std::to_string(n)) {}; 			// Keep the value as long long to prevent narrowing
+		BigInteger() : value_("0") {};											// Default 0 value
 
 		/*-------------------------------
 		 * Utility
 		 *-------------------------------*/
 		int length(){ return value_.length(); }
+		int size(){ return length(); }
 		bool isPalindrome();					// This is not really nessesary, but its nice for euler questions
 		BigInteger reverse();
 
@@ -50,12 +51,12 @@ class BigInteger{
 		//addition functions
 		BigInteger add(BigInteger);
 		BigInteger add(std::string);
-		BigInteger add(long long const&);			// Again, prevent narrowing
+		BigInteger add(const long long);			// Again, prevent narrowing
 
 		//multiplication functions
 		BigInteger multiply(BigInteger);
 		BigInteger multiply(std::string);
-		BigInteger multiply(long long const&);
+		BigInteger multiply(const long long);
 
 		BigInteger oneDigMult(std::string, char);
 
@@ -77,7 +78,7 @@ class BigInteger{
 		template <typename mult_type>
 		void operator *= (mult_type x){ value_ = multiply(x).value_; }
 
-		char operator [] (int i){ return value_[i]; }
+		int operator [] (int i){ return value_[i] - '0'; }
 
 		template<typename compare_type>
 		bool operator == (compare_type const& x){ return equals(x); }
@@ -117,7 +118,7 @@ BigInteger BigInteger::add(BigInteger b){
 	return add(b.toString());
 }
 
-BigInteger BigInteger::add(long long const& n){
+BigInteger BigInteger::add(long long const n){
 	return add(std::to_string(n));
 }
 
@@ -155,7 +156,7 @@ BigInteger BigInteger::multiply(BigInteger b){
 	return multiply(b.value_);
 }
 
-BigInteger BigInteger::multiply(long long const& x){
+BigInteger BigInteger::multiply(const long long x){
 	return multiply(std::to_string(x));
 }
 
