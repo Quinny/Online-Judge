@@ -20,6 +20,8 @@ Important things to note:
 #ifndef QP_PRIME_SIEVE_H__
 #define QP_PRIME_SIEVE_H__
 
+#include <vector>
+
 class PrimeSieve{
 	private:
 		int size_;
@@ -33,6 +35,8 @@ class PrimeSieve{
 		int nthPrime(int);
 		bool isPrime(int n){ return primes_[n]; }
 		int size(){ return size_; }
+
+		std::vector<int> to_vector();
 
 		bool operator [] (int i) { return primes_[i]; }
 
@@ -71,6 +75,14 @@ int PrimeSieve::nthPrime(int n){
 	int p = 0;
 	for(int i = 0; i < n; i++) p = primeAfter(p);
 	return p;
+}
+
+std::vector<int> PrimeSieve::to_vector(){
+	std::vector<int> v;
+	for(int i = 0; i < size(); i++){
+		if(primes_[i]) v.push_back(i);
+	}
+	return v;
 }
 
 #endif
