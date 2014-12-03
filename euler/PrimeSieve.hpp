@@ -24,62 +24,62 @@ Important things to note:
 
 class PrimeSieve{
 	private:
-		int size_;
+		long long size_;
 		bool* primes_;
 
 	public:
-		PrimeSieve(int);
+		PrimeSieve(long long);
 		~PrimeSieve(){ delete[] primes_; }
 
-		int primeAfter(int);
-		int nthPrime(int);
-		bool isPrime(int n){ return primes_[n]; }
+		int primeAfter(long long);
+		int nthPrime(long long);
+		bool isPrime(long long n){ return primes_[n]; }
 		int size(){ return size_; }
 
-		std::vector<int> to_vector();
+		std::vector<long long> to_vector();
 
-		bool operator [] (int i) { return primes_[i]; }
+		bool operator [] (long long i) { return primes_[i]; }
 
 
 	private:
-		void elimMultiples(int const&);
+		void elimMultiples(long long const&);
 
 
 };
 
-PrimeSieve::PrimeSieve(int size){
+PrimeSieve::PrimeSieve(long long size){
 	size_ = size;
 	primes_ = new bool[size_];
-	for(int i = 0; i < size_; i++)
+	for(long long i = 0; i < size_; i++)
 		primes_[i] = true;
 	primes_[0] = false; primes_[1] = false;
 	int prime = 2;
 
-	for(int i = 0; i*i < size_; i++){
+	for(long long i = 0; i * i < size_; i++){
 		elimMultiples(prime);
 		prime = primeAfter(prime);
 	}
 }
 
-void PrimeSieve::elimMultiples(int const& n){
-	for(int i = n*n; i < size_; i+=n) primes_[i] = false;
+void PrimeSieve::elimMultiples(long long const& n){
+	for(long long i = n*n; i < size_; i+=n) primes_[i] = false;
 }
 
-int PrimeSieve::primeAfter(int n){
+int PrimeSieve::primeAfter(long long n){
 	while(n < size_ && !primes_[++n]);
 	if( n >= size_) return 0;
 	return n;
 }
 
-int PrimeSieve::nthPrime(int n){
-	int p = 0;
-	for(int i = 0; i < n; i++) p = primeAfter(p);
+int PrimeSieve::nthPrime(long long n){
+	long long p = 0;
+	for(long long i = 0; i < n; i++) p = primeAfter(p);
 	return p;
 }
 
-std::vector<int> PrimeSieve::to_vector(){
-	std::vector<int> v;
-	for(int i = 0; i < size(); i++){
+std::vector<long long> PrimeSieve::to_vector(){
+	std::vector<long long> v;
+	for(long long i = 0; i < size(); i++){
 		if(primes_[i]) v.push_back(i);
 	}
 	return v;

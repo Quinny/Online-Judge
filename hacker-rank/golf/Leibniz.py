@@ -1,0 +1,1 @@
+for i in range(int(raw_input())):print'{0:.15f}'.format(sum([(-1)**i/(2.0*i+1) for i in range(int(raw_input()))]))
