@@ -5,7 +5,7 @@
 bool is_prime(int);
 
 int main(void){
-	PrimeSieve primes(20000000);
+	pe::PrimeSieve<long> primes(20000000);
 	double nPrimes = 0;
 	double total = 1;
 	int max = 0;

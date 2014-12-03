@@ -5,7 +5,7 @@
 int ways(int, std::vector<int> const&);
 
 int main(){
-	PrimeSieve p(2000);
+	pe::PrimeSieve<int> p(2000);
 	std::vector<int> primes = p.to_vector();
 	int i = 10;
 	while(ways(i, primes) < 5000)

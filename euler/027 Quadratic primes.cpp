@@ -1,10 +1,10 @@
 #include <iostream>
 #include "PrimeSieve.hpp"
 
-int consec_primes(int, int, PrimeSieve&);
+int consec_primes(int, int, pe::PrimeSieve<int>&);
 
 int main(){
-	PrimeSieve primes(2000000);
+	pe::PrimeSieve<int> primes(2000000);
 	int max = 0, prod = 0;
 	for(int a = -1000; a < 1000; a++){
 		for(int b = -1000; b < 1000; b++){
@@ -19,7 +19,7 @@ int main(){
 	return 0;
 }
 
-int consec_primes(int a, int b, PrimeSieve& p){
+int consec_primes(int a, int b, pe::PrimeSieve<int>& p){
 	int n = 0;
 	int c = 0;
 	while(p[(n * n) + (a * n) + b]){

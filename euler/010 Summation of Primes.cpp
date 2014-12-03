@@ -6,7 +6,7 @@ using namespace std;
 #define MAX 2000000
 
 int main(void){
-	PrimeSieve s(MAX);
+	pe::PrimeSieve<int> s(MAX);
 	unsigned long long ans = 0;
 	for(int i = 0; i <= MAX; i++){
 		if(s[i]) ans += i;

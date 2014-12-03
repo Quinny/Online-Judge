@@ -9,7 +9,7 @@ long pow_4(long);
 
 int main(){
 	int cap = 50000000;
-	PrimeSieve p(7072);
+	pe::PrimeSieve<int> p(7072);
 	std::vector<int> primes = p.to_vector();
 	std::set<long> ans;
 	for(auto i:primes){

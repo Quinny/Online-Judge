@@ -5,7 +5,7 @@ int num_digits(int);
 bool is_pandig(int);
 
 int main(){
-	PrimeSieve primes(7654321);
+	pe::PrimeSieve<int> primes(7654321);
 	for(int i = primes.size() - 1; i >= 0; i--){
 		if(primes[i] && is_pandig(i)){
 			std::cout << i << std::endl;

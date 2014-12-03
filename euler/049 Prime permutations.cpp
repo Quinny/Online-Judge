@@ -4,7 +4,7 @@
 bool is_perm(int, int);
 
 int main(){
-	PrimeSieve primes(10000);
+	pe::PrimeSieve<int> primes(10000);
 	for(int i = 1000; i < primes.size(); i++){
 		int len = primes[i];
 		for(int x = 1; x < 3; x++){

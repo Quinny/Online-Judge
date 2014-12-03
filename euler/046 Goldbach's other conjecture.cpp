@@ -7,7 +7,7 @@
 bool is_square(int);
 
 int main(){
-	PrimeSieve primes(LIMIT);
+	pe::PrimeSieve<int> primes(LIMIT);
 	for(int i = 1; i < LIMIT; i += 2){
 		bool found = false;
 		if(!primes[i]){

@@ -2,7 +2,7 @@
 #include "PrimeSieve.hpp"
 
 int main(void){
-	PrimeSieve primes(1000000);
+	pe::PrimeSieve<int> primes(1000000);
 	int n = 0;
 	int mostDivides = 0;
 	for(int i = 2; i < primes.size(); i+=2){

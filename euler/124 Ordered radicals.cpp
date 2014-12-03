@@ -12,7 +12,7 @@ bool compare(std::pair<int, int> x, std::pair<int, int> y) {
 int rad(int, std::vector<int> const&);
 
 int main(){
-	PrimeSieve p(100001);
+	pe::PrimeSieve<int> p(100001);
 	std::vector<int> primes = p.to_vector();
 	std::vector <std::pair<int, int>> v;
 	for(int i = 1; i <= 100000; i++)

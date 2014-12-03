@@ -4,7 +4,7 @@
 #define MAX 1000000
 
 int main(void){
-	PrimeSieve primes(MAX);
+	pe::PrimeSieve<int> primes(MAX);
 	int sum = 0;
 	int terms = 0;
 	int n = 0;
