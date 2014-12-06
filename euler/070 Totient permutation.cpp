@@ -22,6 +22,7 @@ int main(){
 			n = i;
 		}
 	}
+	free(phi);
 	std::cout << n << std::endl;
 	return 0;
 }
