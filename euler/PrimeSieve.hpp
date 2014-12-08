@@ -23,7 +23,7 @@ cannot be modified anyways
 
 namespace pe{ // project euler namespace
 
-template <typename size_type>
+template <typename size_type = int>
 class PrimeSieve{
 	private:
 		size_type size_;

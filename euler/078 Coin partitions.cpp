@@ -2,7 +2,7 @@
 
 int main(void){
 	int n = 60000;
-	long a[n+1];
+	int a[n+1];
 	memset(a,0,sizeof(a));
 	a[0] = 1;
 	for(int i = 1; i < n; i++){
