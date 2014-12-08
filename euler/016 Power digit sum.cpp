@@ -10,7 +10,7 @@ int main(void){
 		n+=n;
 
 	for(int i=0;i<n.length();i++)
-		ans+=(n[i]-'0');
+		ans += n[i];
 
 	cout<<ans<<endl;
 

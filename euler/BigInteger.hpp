@@ -33,13 +33,13 @@ class BigInteger{
 		 *-------------------------------*/
 		int length(){ return value_.length(); }
 		int size(){ return length(); }
-		bool isPalindrome();					// This is not really nessesary, but its nice for euler questions
+		bool palindrome();					// This is not really nessesary, but its nice for euler questions
 		BigInteger reverse();
 
 		/*-------------------------------
 		 * Conversions
 		 *-------------------------------*/
-		std::string toString(){ return value_; }
+		std::string to_string(){ return value_; }
 
 		/*-------------------------------
 		 * Iterators
@@ -58,7 +58,7 @@ class BigInteger{
 		BigInteger multiply(std::string);
 		BigInteger multiply(const long long);
 
-		BigInteger oneDigMult(std::string, char);
+		BigInteger small_mult(std::string, char);
 
 		bool equals(std::string const&);
 		bool equals(BigInteger const&);
@@ -115,7 +115,7 @@ BigInteger BigInteger::add(std::string s){
 }
 
 BigInteger BigInteger::add(BigInteger b){
-	return add(b.toString());
+	return add(b.to_string());
 }
 
 BigInteger BigInteger::add(long long const n){
@@ -128,7 +128,7 @@ BigInteger BigInteger::add(long long const n){
  * Multiplication
  *-------------------------------*/
 
-BigInteger BigInteger::oneDigMult(std::string top, char bottom){
+BigInteger BigInteger::small_mult(std::string top, char bottom){
 	int dig = bottom - '0';
 	int carry = 0;
 	std::string prod = "";
@@ -144,7 +144,7 @@ BigInteger BigInteger::oneDigMult(std::string top, char bottom){
 BigInteger BigInteger::multiply(std::string s){
 	BigInteger sum;
 	for(int i = s.length() - 1; i >= 0; i--){
-		BigInteger prod = oneDigMult(value_,s[i]);
+		BigInteger prod = small_mult(value_,s[i]);
 		for(int j = 0; j < s.length() - i - 1; j++)
 			prod.value_ = prod.value_ + "0";
 		sum += prod;
@@ -176,7 +176,7 @@ bool BigInteger::equals(BigInteger const& b){
  * Utility
  *-------------------------------*/
 
-bool BigInteger::isPalindrome(){
+bool BigInteger::palindrome(){
 	int len = length();
 	for(int i = 0; i < len/2; i++){
 		if(value_[i] != value_[len - i - 1]) return false;
@@ -188,6 +188,11 @@ BigInteger BigInteger::reverse(){
 	std::string tmp = value_;
 	std::reverse(tmp.begin(),tmp.end());
 	return BigInteger(tmp);
+}
+
+std::ostream& operator<< (std::ostream &out, BigInteger &x){
+	out << x.to_string();
+    return out;
 }
 
 //ifndef QP_BIG_INT_H__

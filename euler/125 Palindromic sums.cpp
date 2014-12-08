@@ -19,7 +19,7 @@ int main(){
 	BigInteger ans;
 	for(auto i : s)
 		ans += i;
-	std::cout << ans.toString() << std::endl;
+	std::cout << ans << std::endl;
 	return 0;
 }
 
