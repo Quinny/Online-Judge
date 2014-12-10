@@ -33,6 +33,10 @@ class PrimeSieve{
 		PrimeSieve(size_type);
 		~PrimeSieve(){ delete[] primes_; }
 		PrimeSieve operator=(PrimeSieve) = delete;
+		static std::vector<size_type> make_vector(size_type s){
+			PrimeSieve<size_type> p(s);
+			return p.to_vector();
+		}
 
 		size_type next_prime(size_type);
 		size_type nth_prime(const size_type);
