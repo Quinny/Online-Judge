@@ -1,14 +1,14 @@
 #include <iostream>
 #define MAX 1000
 
-int getCycleLength(int);
+int cycle_length(int);
 
-int main(void){
+int main(){
 	int max = 0;
 	int d = 0;
 	for(int i = MAX; i > 0; i--){
 		if(max > i) break;
-		int tmp = getCycleLength(i);
+		int tmp = cycle_length(i);
 		if(tmp > max){
 			max = tmp;
 			d = i;
@@ -18,11 +18,9 @@ int main(void){
 	return 0;
 }
 
-int getCycleLength(int denom){
+int cycle_length(int denom){
 	int remainders[denom];
-	for(int i = 0; i < denom; i++)
-		remainders[i] = 0;
-
+	memset(remainders, 0, sizeof(remainders));
 	int pos = 0;
 	int cur = 1;
 	while(cur != 0 && remainders[cur] == 0){

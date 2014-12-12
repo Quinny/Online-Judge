@@ -1,7 +1,7 @@
 #include <iostream>
 #include "BigInteger.hpp"
 
-int main(void){
+int main(){
 	BigInteger x("100");
 	for(int i = 99; i >= 2; i--)
 		x *= i;

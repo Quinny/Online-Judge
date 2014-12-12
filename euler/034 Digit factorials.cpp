@@ -3,7 +3,7 @@
 int fact(int);
 int factDigits(int);
 
-int main(void){
+int main(){
 	int ans = 0;
 	for(int i = 3; i <= 40585; i++){
 		if(i == factDigits(i)) ans += i;
@@ -25,7 +25,7 @@ int factDigits(int n){
 	int ans = 0;
 	while(n > 0){
 		ans += fact(n%10);
-		n/=10;
+		n /= 10;
 	}
 	return ans;
 }

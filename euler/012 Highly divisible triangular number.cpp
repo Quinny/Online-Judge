@@ -1,21 +1,18 @@
 #include <iostream>
 
-using namespace std;
+int divisors(long long);
 
-int numDivsors(long long);
-
-int main(void){
-	int sum=1;
-	for(int i=2;numDivsors(sum)<=500;sum+=i,i++);
-	cout<<sum<<endl;
-
+int main(){
+	int sum = 1;
+	for(int i = 2; divisors(sum) <= 500; sum += i, i++);
+	std::cout << sum << std::endl;
 	return 0;
 }
 
-int numDivsors(long long n){
-	int ans=0;
-	for(int i=1;i*i<n;i++){
-		if(n%i==0) ans+=2;
+int divisors(long long n){
+	int ans = 0;
+	for(int i = 1; i * i <= n; i++){
+		if(n % i == 0) ans+=2;
 	}
 	return ans;
 }

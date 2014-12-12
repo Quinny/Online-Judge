@@ -34,12 +34,11 @@ int main(void){
 		{100,7},
 		{1000,8}
 	};
-
 	int ans = 0;
 	for(int i = 1; i <= 1000; i++){
 		int n = i;
 		if(n >= 100 && n < 1000){
-			ans += lengths[n/100];
+			ans += lengths[n / 100];
 			ans += lengths[100];
 			if(n % 100 == 0) n = 0;
 			else{
@@ -54,9 +53,8 @@ int main(void){
 			ans += lengths[n % 10];
 		}
 		if(n == 1000)
-			ans += lengths[n/1000] + lengths[1000];
+			ans += lengths[n / 1000] + lengths[1000];
 	}
-	
 	std::cout << ans << std::endl;
 	return 0;
 }
