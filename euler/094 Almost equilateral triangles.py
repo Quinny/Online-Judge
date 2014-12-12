@@ -1,4 +1,3 @@
-import math
 #thanks to this article http://www.had2know.com/academics/nearly-equilateral-heronian-triangles.html
 limit = 333333333
 
@@ -12,5 +11,4 @@ while(w[-1] < limit):
 	w.append((15 * w[-1]) - (15 * w[-2]) + w[-3])
 w = w[0:-1]
 
-ans = sum(map(lambda x : x * 3 + 1, v)) + sum(map(lambda x : x * 3 + 2, w))
-print ans
+print sum(map(lambda x : x * 3 + 1, v)) + sum(map(lambda x : x * 3 + 2, w))
