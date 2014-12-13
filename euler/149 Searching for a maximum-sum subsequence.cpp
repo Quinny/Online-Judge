@@ -26,7 +26,6 @@ int main(){
 		max = std::max(max, kadanes_in_dir(a, i, 0, 0, 1)); // horizontal
 		max = std::max(max, kadanes_in_dir(a, 0, i, 1, 0)); // vertical 
 		max = std::max(max, kadanes_in_dir(a, 0, i, 1, 1)); // right down colwise
-		max = std::max(max, kadanes_in_dir(a, SIZE - 1, i, -1, 1)); // from bottom row right up
 		max = std::max(max, kadanes_in_dir(a, SIZE - 1, i, -1, -1)); // from bottom left up
 	}
 	std::cout << max << std::endl;
@@ -40,8 +39,7 @@ long kadanes_in_dir(long **a, int i, int j, int dx, int dy){
 	long cur = a[i][j], max = cur;
 	i += dx; j += dy;
 	while(i + dx <= SIZE && i + dx >= 0 && j + dy <= SIZE && j + dy >= 0){
-		if(cur < 0) cur = a[i][j];
-		else cur += a[i][j];
+		cur = std::max(cur + a[i][j], 0L);
 		max = std::max(cur, max);
 		i += dx; j += dy;
 	}
