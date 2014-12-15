@@ -1,7 +1,0 @@
-#!/usr/bin/env python
-
-import urllib2
-url="http://somewhere.com"
-page =urllib2.urlopen(url)
-data=page.read()
-print data
