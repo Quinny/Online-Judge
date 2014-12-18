@@ -20,6 +20,7 @@ cannot be modified anyways
 #define QP_PRIME_SIEVE_H__
 
 #include <vector>
+#include <bitset>
 
 namespace pe{ // project euler namespace
 
@@ -27,11 +28,10 @@ template <typename size_type = int>
 class PrimeSieve{
 	private:
 		size_type size_;
-		bool* primes_;
+		std::vector<bool> primes_;
 
 	public:
 		PrimeSieve(size_type);
-		~PrimeSieve(){ delete[] primes_; }
 		PrimeSieve operator=(PrimeSieve) = delete;
 		static std::vector<size_type> make_vector(size_type s){
 			PrimeSieve<size_type> p(s);
@@ -57,7 +57,7 @@ class PrimeSieve{
 template <typename size_type>
 PrimeSieve<size_type>::PrimeSieve(const size_type size){
 	size_ = size + 1;
-	primes_ = new bool[size_];
+	primes_.reserve(size_);
 	for(size_type i = 0; i < size_; i++)
 		primes_[i] = true;
 	primes_[0] = false; primes_[1] = false;
@@ -67,7 +67,6 @@ PrimeSieve<size_type>::PrimeSieve(const size_type size){
 		elim_mult(prime);
 		prime = next_prime(prime);
 	}
-
 }
 
 template <typename size_type>
