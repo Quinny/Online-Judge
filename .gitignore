@@ -2,3 +2,4 @@
 *.DS_STORE
 *.txt
 /a.out.dSYM/
+*.pyc

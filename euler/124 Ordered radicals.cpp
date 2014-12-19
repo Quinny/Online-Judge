@@ -9,11 +9,10 @@ bool compare(std::pair<int, int> x, std::pair<int, int> y) {
 	return x.second < y.second;
 }
 
-int rad(int, std::vector<int> const&);
+int rad(int, std::vector<unsigned long> const&);
 
 int main(){
-	pe::PrimeSieve<int> p(100001);
-	std::vector<int> primes = p.to_vector();
+	auto primes = pe::PrimeSieve<100001>::make_vector();
 	std::vector <std::pair<int, int>> v;
 	for(int i = 1; i <= 100000; i++)
 		v.push_back(std::make_pair(i, rad(i, primes)));
@@ -22,7 +21,7 @@ int main(){
 	return 0;
 }
 
-int rad(int x, std::vector<int> const& primes){
+int rad(int x, std::vector<unsigned long> const& primes){
 	int ans = 1;
 	int i = 0;
 	while(x > 1){

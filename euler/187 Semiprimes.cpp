@@ -3,7 +3,7 @@
 #define LIMIT 100000000
 
 int main(){
-	std::vector<long> primes = pe::PrimeSieve<long>::make_vector(50000000);
+	auto primes = pe::PrimeSieve<50000000>::make_vector();
 	long ans = 0;
 	for(int i = 0; i < primes.size(); i++){
 		if(primes[i] < 10000) ans++;

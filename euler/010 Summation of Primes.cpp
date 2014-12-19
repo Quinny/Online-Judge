@@ -4,7 +4,7 @@
 #define MAX 2000000
 
 int main(){
-	pe::PrimeSieve<int> s(MAX);
+	pe::PrimeSieve<MAX> s;
 	unsigned long long ans = 0;
 	for(int i = 0; i <= MAX; i++){
 		if(s[i]) ans += i;

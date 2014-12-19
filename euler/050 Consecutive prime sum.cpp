@@ -4,7 +4,7 @@
 #define MAX 1000000
 
 int main(void){
-	pe::PrimeSieve<int> primes(MAX);
+	pe::PrimeSieve<MAX> primes;
 	int sum = 0;
 	int terms = 0;
 	int n = 0;
@@ -26,6 +26,5 @@ int main(void){
 		sum = 0;
 		terms = 0;
 	}
-
-	std::cout<<n<<std::endl;
+	std::cout << n << std::endl;
 }

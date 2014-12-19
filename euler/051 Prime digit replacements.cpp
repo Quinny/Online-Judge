@@ -2,14 +2,14 @@
 #include "PrimeSieve.hpp"
 #include <vector>
 
-int family_size(int, pe::PrimeSieve<int>&);
-std::vector<int> repeats(int);
-std::vector<int> dig_vector(int);
-int replace(std::vector<int>&, int, int);
+int family_size(int, pe::PrimeSieve<1000000>&);
+std::vector<unsigned long> repeats(int);
+std::vector<unsigned long> dig_vector(int);
+int replace(std::vector<unsigned long>&, int, int);
 
 int main(){
-	pe::PrimeSieve<int> p(1000000);
-	std::vector<int> primes = p.to_vector();
+	pe::PrimeSieve<1000000> p;
+	std::vector<unsigned long> primes = p.to_vector();
 	for(auto i : primes){
 		if(family_size(i, p) == 8){
 			std::cout << i << std::endl;
@@ -19,8 +19,8 @@ int main(){
 	return 0;
 }
 
-std::vector<int> dig_vector(int n){
-	std::vector<int> v;
+std::vector<unsigned long> dig_vector(int n){
+	std::vector<unsigned long> v;
 	while(n > 0){
 		v.push_back(n % 10);
 		n /= 10;
@@ -29,8 +29,8 @@ std::vector<int> dig_vector(int n){
 	return v;
 }
 
-std::vector<int> repeats(int n){
-	std::vector<int> r;
+std::vector<unsigned long> repeats(int n){
+	std::vector<unsigned long> r;
 	int occurances[10];
 	memset(occurances, 0, sizeof(occurances));
 	while(n > 0){
@@ -43,7 +43,7 @@ std::vector<int> repeats(int n){
 	return r;
 }
 
-int replace(std::vector<int>& digits, int x, int y){
+int replace(std::vector<unsigned long>& digits, int x, int y){
 	if(digits[0] == x && y == 0) return 4; // not really super elegant, but leading zeros shouldnt count
 	int n = 0;
 	for(auto i : digits){
@@ -53,7 +53,7 @@ int replace(std::vector<int>& digits, int x, int y){
 	return n;
 }
 
-int family_size(int n, pe::PrimeSieve<int>& primes){
+int family_size(int n, pe::PrimeSieve<1000000>& primes){
 	int s = 0;
 	auto orig = dig_vector(n);
 	auto rep = repeats(n);

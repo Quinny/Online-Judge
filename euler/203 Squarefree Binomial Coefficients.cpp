@@ -4,11 +4,11 @@
 #include "PrimeSieve.hpp"
 
 std::set<long> unique_row(int);
-bool square_free(long, std::vector<long>&);
+bool square_free(long, std::vector<unsigned long>&);
 
 int main(){
 	long ans = 0;
-	std::vector<long> primes = pe::PrimeSieve<long>::make_vector(11243247);
+	auto primes = pe::PrimeSieve<11243247>::make_vector();
 	std::set<long> all_rows;
 	for(int i = 0; i < 51; i++){
 		auto s = unique_row(i);
@@ -22,7 +22,7 @@ int main(){
 	return 0;
 }
 
-bool square_free(long n, std::vector<long>& primes){
+bool square_free(long n, std::vector<unsigned long>& primes){
 	int i = 0;
 	while(primes[i] * primes[i] <= n){
 		if(n % (primes[i] * primes[i]) == 0) return false;

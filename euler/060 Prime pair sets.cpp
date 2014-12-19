@@ -12,7 +12,7 @@ bool belongs(long, std::vector<int>&);
 
 int main(){
 	std::unordered_map<int, std::vector<int>> equiv_class;
-	std::vector<int> primes = pe::PrimeSieve<int>::make_vector(30000);
+	std::vector<unsigned long> primes = pe::PrimeSieve<30000>::make_vector();
 	for(int i = 0; i < primes.size(); i++){
 		int p1 = primes[i];
 		equiv_class[p1].push_back(p1);
@@ -21,7 +21,7 @@ int main(){
 			if(belongs(p2, equiv_class[p1])){
 				equiv_class[p1].push_back(p2);
 				if(equiv_class[p1].size() == 5){
-					int ans = std::accumulate(equiv_class[p1].begin(), equiv_class[p1].end(), 0);
+					long ans = std::accumulate(equiv_class[p1].begin(), equiv_class[p1].end(), 0);
 					std::cout << ans << std::endl;
 					return 0;
 				}

@@ -2,13 +2,14 @@
 #include "PrimeSieve.hpp"
 
 int main(void){
-	pe::PrimeSieve<int> primes(1000000);
+	auto primes = pe::PrimeSieve<1000000>::make_vector();
 	int n = 0;
 	int mostDivides = 0;
-	for(int i = 2; i < primes.size(); i+=2){
+	for(int i = 2; i < 1000000; i+=2){
 		int cur = 0;
-		for(int j = 0; j*j < i; j++){
-			if(primes[j] && i % j == 0) cur++;
+		for(auto j : primes){
+			if(j * j > i) break;
+			if(i % j == 0) cur++;
 		}
 		if(cur > mostDivides){
 			mostDivides = cur;

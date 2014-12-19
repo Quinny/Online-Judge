@@ -1,10 +1,10 @@
 #include <iostream>
 #include "PrimeSieve.hpp"
 
-bool four_distinct(int, pe::PrimeSieve<int>&);
+bool four_distinct(int, pe::PrimeSieve<1000000>&);
 
 int main(){
-	pe::PrimeSieve<int> primes(1000000);
+	pe::PrimeSieve<1000000> primes;
 	for(int i = 0; i < primes.size(); i++){
 		if(four_distinct(i, primes)){
 			if(four_distinct(i + 1, primes)){
@@ -23,7 +23,7 @@ int main(){
 	return 0;
 }
 
-bool four_distinct(int x, pe::PrimeSieve<int>& primes){
+bool four_distinct(int x, pe::PrimeSieve<1000000>& primes){
 	if(primes[x])
 		return false;
 	int d = primes.next_prime(0);

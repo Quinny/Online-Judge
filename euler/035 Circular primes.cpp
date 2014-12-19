@@ -5,10 +5,10 @@
 
 #define MAX 1000000
 
-bool checkRotate(int, pe::PrimeSieve<int>&);
+bool checkRotate(int, pe::PrimeSieve<MAX>&);
 
 int main(void){
-	pe::PrimeSieve<int> primes(MAX);
+	pe::PrimeSieve<MAX> primes;
 	int ans = 0;
 	for(int i = 0; i < MAX; i++){
 		if(primes[i] && checkRotate(i,primes)) ans++;
@@ -18,7 +18,7 @@ int main(void){
 	return 0;
 }
 
-bool checkRotate(int n, pe::PrimeSieve<int>& primes){
+bool checkRotate(int n, pe::PrimeSieve<MAX>& primes){
 	std::string s = std::to_string(n);
 	for(int i = 0; i < s.length(); i++){
 		std::rotate(s.begin(),s.end()-1,s.end());

@@ -5,8 +5,7 @@
 int ways(int, std::vector<int> const&);
 
 int main(){
-	pe::PrimeSieve<int> p(2000);
-	std::vector<int> primes = p.to_vector();
+	auto primes = pe::PrimeSieve<2000>::make_vector();
 	int i = 10;
 	while(ways(i, primes) < 5000)
 		i++;
@@ -14,7 +13,7 @@ int main(){
 	return 0;
 }
 
-int ways(int n, std::vector<int> const& primes){
+int ways(int n, std::vector<unsigned long> const& primes){
 	int a[n+1];
 	memset(a,0,sizeof(a));
 	a[0] = 1;

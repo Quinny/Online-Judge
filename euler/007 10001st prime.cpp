@@ -2,7 +2,7 @@
 #include "PrimeSieve.hpp"
 
 int main(){
-	pe::PrimeSieve<long> s(110000);
-	std::cout << s.nth_prime(10001) << std::endl;
+	auto v = pe::PrimeSieve<110000>::make_vector();
+	std::cout << v[10001] << std::endl;
 	return 0;
 }
