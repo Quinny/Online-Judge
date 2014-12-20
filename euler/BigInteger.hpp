@@ -25,43 +25,43 @@ class BigInteger{
 		 * Constructors
 		 *-------------------------------*/
 		BigInteger(std::string const& s) : value_(s) {};
-		BigInteger(const long long n) : value_(std::to_string(n)) {}; 			// Keep the value as long long to prevent narrowing
+		BigInteger(const unsigned long long n) : value_(std::to_string(n)) {}; 	// Keep the value as long long to prevent narrowing
 		BigInteger() : value_("0") {};											// Default 0 value
 
 		/*-------------------------------
 		 * Utility
 		 *-------------------------------*/
-		int length(){ return value_.length(); }
-		int size(){ return length(); }
-		bool palindrome();					// This is not really nessesary, but its nice for euler questions
-		BigInteger reverse();
+		int length() const { return value_.length(); }
+		int size() const { return length(); }
+		bool palindrome() const;					// This is not really nessesary, but its nice for euler questions
+		BigInteger reverse() const;
 
 		/*-------------------------------
 		 * Conversions
 		 *-------------------------------*/
-		std::string to_string(){ return value_; }
+		std::string to_string() const { return value_; }
 
 		/*-------------------------------
 		 * Iterators
 		 *-------------------------------*/
-		 std::string::iterator begin(){ return value_.begin(); }
-		 std::string::iterator end(){ return value_.end(); }
+		 std::string::iterator begin() { return value_.begin(); }
+		 std::string::iterator end() { return value_.end(); }
 
 	private:
 		//addition functions
 		BigInteger add(BigInteger);
 		BigInteger add(std::string);
-		BigInteger add(const long long);			// Again, prevent narrowing
+		BigInteger add(const unsigned long long);			// Again, prevent narrowing
 
 		//multiplication functions
 		BigInteger multiply(BigInteger);
 		BigInteger multiply(std::string);
-		BigInteger multiply(const long long);
+		BigInteger multiply(const unsigned long long);
 
-		BigInteger small_mult(std::string, char);
+		BigInteger small_mult(std::string, char) const;
 
-		bool equals(std::string const&);
-		bool equals(BigInteger const&);
+		bool equals(std::string const&) const;
+		bool equals(BigInteger const&) const;
 
 
 	public:
@@ -78,12 +78,12 @@ class BigInteger{
 		template <typename mult_type>
 		void operator *= (mult_type x){ value_ = multiply(x).value_; }
 
-		int operator [] (int i){ return value_[i] - '0'; }
+		int operator [] (int i) const { return value_[i] - '0'; }
 
 		template<typename compare_type>
-		bool operator == (compare_type const& x){ return equals(x); }
+		bool operator == (compare_type const& x) const { return equals(x); }
 		template<typename compare_type>
-		bool operator != (compare_type const& x){ return !equals(x); }
+		bool operator != (compare_type const& x) const { return !equals(x); }
 
 };
 
@@ -102,12 +102,12 @@ BigInteger BigInteger::add(std::string s){
 		for(int i = 0; i < dif; i++)
 			value_ = "0" + value_;
 	}
-
 	int carry = 0;
 	std::string sum = "";
+	sum.reserve(length());
 	for(int i = length()-1; i >= 0; i--){
 		int val = (value_[i] - '0') + (s[i] - '0') + carry;		// Add the numbers digit by digit
-		sum = std::to_string(val%10) + sum;						// Just like grade school
+		sum = std::to_string(val % 10) + sum;					// Just like grade school
 		carry = val/10;
 	}
 	if(carry) sum = "1" + sum;									// If there is a left over carry then add it
@@ -118,7 +118,7 @@ BigInteger BigInteger::add(BigInteger b){
 	return add(b.to_string());
 }
 
-BigInteger BigInteger::add(long long const n){
+BigInteger BigInteger::add(unsigned long long const n){
 	return add(std::to_string(n));
 }
 
@@ -128,7 +128,7 @@ BigInteger BigInteger::add(long long const n){
  * Multiplication
  *-------------------------------*/
 
-BigInteger BigInteger::small_mult(std::string top, char bottom){
+BigInteger BigInteger::small_mult(std::string top, char bottom) const {
 	int dig = bottom - '0';
 	int carry = 0;
 	std::string prod = "";
@@ -156,7 +156,7 @@ BigInteger BigInteger::multiply(BigInteger b){
 	return multiply(b.value_);
 }
 
-BigInteger BigInteger::multiply(const long long x){
+BigInteger BigInteger::multiply(const unsigned long long x){
 	return multiply(std::to_string(x));
 }
 
@@ -164,11 +164,11 @@ BigInteger BigInteger::multiply(const long long x){
  * Operators
  *-------------------------------*/
 
-bool BigInteger::equals(std::string const& s){
+bool BigInteger::equals(std::string const& s) const {
 	return value_ == s;
 }
 
-bool BigInteger::equals(BigInteger const& b){
+bool BigInteger::equals(BigInteger const& b) const {
 	return equals(b.value_);
 }
 
@@ -176,7 +176,7 @@ bool BigInteger::equals(BigInteger const& b){
  * Utility
  *-------------------------------*/
 
-bool BigInteger::palindrome(){
+bool BigInteger::palindrome() const {
 	int len = length();
 	for(int i = 0; i < len/2; i++){
 		if(value_[i] != value_[len - i - 1]) return false;
@@ -184,7 +184,7 @@ bool BigInteger::palindrome(){
 	return true;
 }
 
-BigInteger BigInteger::reverse(){
+BigInteger BigInteger::reverse() const {
 	std::string tmp = value_;
 	std::reverse(tmp.begin(),tmp.end());
 	return BigInteger(tmp);
