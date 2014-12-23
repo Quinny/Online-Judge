@@ -57,7 +57,7 @@ size_type PrimeSieve<SIZE>::next_prime(size_type n) const{
 template<size_type SIZE>
 std::vector<size_type> PrimeSieve<SIZE>::to_vector() const {
 	std::vector<size_type> v(primes_.count());
-	int c = 0;
+	unsigned long c = 0;
 	for(size_type i = 0; i < SIZE; i++){
 		if(primes_[i])
 			v[c++] = i;
