@@ -40,6 +40,14 @@ class undirected_graph{
 				}
 			}
 		}
+
+		bool has_node(T v){
+			return nodes_.find(v) != nodes_.end();
+		}
+
+		int size(){
+			return nodes_.size();
+		}
 };
 
 #endif

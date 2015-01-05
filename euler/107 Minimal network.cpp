@@ -1,6 +1,5 @@
 #include <iostream>
 #include <queue>
-#include <set>
 #include "undirected_graph.hpp"
 
 #define N 40
@@ -27,20 +26,18 @@ int main(){
 		}
 	}
 	int cost = 0;
-	std::set<char> span;
 	add_adjacent('A', graph, q);
-	span.insert('A');
 	graph.remove_node('A');
-	while(span.size() < N){ // go until we have a connection to all verticies
+	while(graph.size() > 0){ // go until we have a connection to all verticies
 		auto t = q.top();
-		while(span.find(t.first) != span.end()){ // prevent cycling through parralel edges
+		while(!graph.has_node(t.first)){
 			q.pop();
 			t = q.top();
 		}
 		q.pop();
 		cost += t.second;
-		span.insert(t.first);
 		add_adjacent(t.first, graph, q); // add all adjacent edges of the lighest vertex found
+		graph.remove_node(t.first); // we have a link to the node so delete it
 	}
 	std::cout << (orig / 2) - cost << std::endl; // divide the original weight by 2 to account for parralel edges*/
 	return 0;
