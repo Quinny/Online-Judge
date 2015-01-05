@@ -1,21 +1,19 @@
 #include <iostream>
-#include <unordered_map>
 #include <queue>
 #include <set>
+#include "undirected_graph.hpp"
 
 #define N 40
 
 struct Compare{
-	bool operator() (std::pair<char, int> const& a, std::pair<char, int> const& b){ return a.second > b.second; }
+	bool operator() (std::pair<char, unsigned long> const& a, std::pair<char, unsigned long> const& b){ return a.second > b.second; }
 };
+using PQ = std::priority_queue<std::pair<char, unsigned long>, std::vector<std::pair<char, unsigned long>>, Compare>;
 
-using Graph = std::unordered_multimap<char, std::pair<char, int>>; // because typing all this out is annoying
-using PQ = std::priority_queue<std::pair<char, int>, std::vector<std::pair<char, int>>, Compare>;
-
-void add_adjacent(char, Graph&, PQ&);
+void add_adjacent(char, undirected_graph<char>&, PQ&);
 
 int main(){
-	Graph graph;
+	undirected_graph<char> graph;
 	PQ q;
 	int orig = 0;
 	for(int i = 0; i < N; i++){
@@ -23,7 +21,7 @@ int main(){
 			int w;
 			std::cin >> w;
 			if(w > -1){ // check if legit number
-				graph.insert(std::make_pair('A' + i, std::make_pair('A' + j, w))); // make an adjacency list
+				graph.connect('A' + i, 'A' + j, w);
 				orig += w;
 			}
 		}
@@ -32,6 +30,7 @@ int main(){
 	std::set<char> span;
 	add_adjacent('A', graph, q);
 	span.insert('A');
+	graph.remove_node('A');
 	while(span.size() < N){ // go until we have a connection to all verticies
 		auto t = q.top();
 		while(span.find(t.first) != span.end()){ // prevent cycling through parralel edges
@@ -43,15 +42,11 @@ int main(){
 		span.insert(t.first);
 		add_adjacent(t.first, graph, q); // add all adjacent edges of the lighest vertex found
 	}
-	std::cout << (orig / 2) - cost << std::endl; // divide the original weight by 2 to account for parralel edges
+	std::cout << (orig / 2) - cost << std::endl; // divide the original weight by 2 to account for parralel edges*/
 	return 0;
 }
 
-void add_adjacent(char k, Graph& g, PQ& q){
-	auto range = g.equal_range(k);
-	for_each (
-		range.first,
-		range.second,
-		[&](Graph::value_type& x){ q.push(x.second); }
-	);
+void add_adjacent(char k, undirected_graph<char>& g, PQ& q){
+	for(auto v : g.adjacent_to(k))
+		q.push(v);
 }
