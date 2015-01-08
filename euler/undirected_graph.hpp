@@ -63,6 +63,7 @@ void undirected_graph<T>::connect(T const& u, T const& v, const unsigned long w)
 		if(i.to_ == v && i.weight_ == w) return; // check to make sure they are not already connected
 												 // Reasoning for this is many input sets include redundancy
 	}
+	if(u == v) return;
 	nodes_[u].push_back(Edge<T>(u, v, w));
 	nodes_[v].push_back(Edge<T>(v, u, w));
 }
