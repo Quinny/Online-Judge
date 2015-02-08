@@ -195,5 +195,14 @@ std::ostream& operator<< (std::ostream &out, BigInteger &x){
     return out;
 }
 
+std::istream& operator>> std::(istream &in, BigInteger &x){
+    std::string s;
+    in >> s;
+    BigInteger y(s);
+    if(in)
+        x = std::move(y);
+    return in;
+}
+
 //ifndef QP_BIG_INT_H__
 #endif
