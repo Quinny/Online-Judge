@@ -32,8 +32,7 @@ bool square_free(long n, std::vector<unsigned long>& primes){
 }
 
 std::set<long> unique_row(int n){
-	std::vector<long> row;
-	row.push_back(1);
+	std::vector<long> row {1};
 	std::set<long> uniques;
 	for(int i = 0; i < n; i++){
 		row.push_back(row[i] * (n - i) / (i + 1));

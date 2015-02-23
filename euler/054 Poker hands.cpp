@@ -105,6 +105,7 @@ struct Hand {
         return -1;
     }
 
+
     int straight(){
         int f = h_[0].val_;
         for(int i = 1; i < 5; i++){
