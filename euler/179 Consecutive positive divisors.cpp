@@ -9,7 +9,7 @@ int main(){
 			divisors[i * j]++;
 		}
 	}
-	
+
 	long ans = 0;
 	for(int i = 2; i < LIMIT; i++){
 		if(divisors[i] == divisors[i + 1]) ans++;

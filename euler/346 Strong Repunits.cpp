@@ -1,5 +1,6 @@
 #include <iostream>
 #include <unordered_set>
+#include <numeric>
 const long lim = 1000000000000L;
 
 long all_ones(int base, int len);
@@ -13,10 +14,7 @@ int main() {
             s.insert(x);
         }
     }
-    long ans = 1;
-    for (auto i : s)
-        ans += i;
-    std::cout << ans << std::endl;
+    std::cout << std::accumulate(s.begin(), s.end(), 0L) << std::endl;
     return 0;
 }
 
