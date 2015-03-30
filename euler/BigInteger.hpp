@@ -195,7 +195,7 @@ std::ostream& operator<< (std::ostream &out, BigInteger &x){
     return out;
 }
 
-std::istream& operator>> std::(istream &in, BigInteger &x){
+std::istream& operator>> (std::istream &in, BigInteger &x){
     std::string s;
     in >> s;
     BigInteger y(s);
