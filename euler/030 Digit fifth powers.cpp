@@ -11,7 +11,7 @@ int main(){
 			ans += i;
 	}
 	std::cout << ans << std::endl;
-	return 0;	
+	return 0;
 }
 
 int pow_5(int x){
