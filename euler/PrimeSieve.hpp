@@ -4,12 +4,12 @@
 #include <bitset>
 #include <vector>
 
-namespace pe{
+namespace pe {
 
 using size_type = unsigned long;
 
-template<size_type SIZE>
-class PrimeSieve{
+template <size_type SIZE>
+class PrimeSieve {
 	private:
 		std::bitset<SIZE> primes_;
 

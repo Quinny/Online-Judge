@@ -1,27 +1,30 @@
 #include <stdio.h>
-#include <map>
+#include <set>
+#include <iostream>
 
-#define LIMIT 365 //the longest word in the file is 14 characters, 14*26 = 364
+// the longest word in the file is 14 characters, 14*26 = 364
+#define LIMIT 365
 
 int wordVal(char* s);
 
 int main(void){
 	int sum = 0;
-	std::map<int,bool> triangles;
+	//std::set<int> triangles;
+    bool triangles[66430] = {false};
 	for(int i = 1; i < LIMIT; i++){
 		triangles[sum] = true;
-		sum+=i;
+        sum += i;
 	}
 
-	FILE* nFile = fopen("22names.txt","r");
+	FILE* nFile = fopen("p042_words.txt","r");
 	char tmp[20];
 	int ans = 0;
-	while(!feof(nFile)){
-		fscanf(nFile,"%*c%[^\"]s%*c%*c",tmp);
-		if(tmp[0]!=',' && triangles.find(wordVal(tmp)) != triangles.end())
+	while (!feof(nFile)) {
+		fscanf(nFile,"%*c%[^\"]s%*c%*c", tmp);
+		if (tmp[0] != ',' && triangles[wordVal(tmp)])
 			ans++;
 	}
-	printf("%d\n",ans);
+	printf("%d\n", ans - 1);
 
 	return 0;
 }

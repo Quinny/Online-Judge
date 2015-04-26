@@ -7,7 +7,7 @@ std::pair<int, int> smallest_elem(int);
 
 struct sum_divisors {
     mutable std::unordered_map<int, int> m_;
-    int operator () (int n) {
+    int operator () (int n) const {
         if (m_[n])
             return m_[n];
         int ans = 1;

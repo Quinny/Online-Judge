@@ -7,7 +7,7 @@ bool is_pandig(int);
 int main(){
 	pe::PrimeSieve<7654321> primes;
 	for(int i = primes.size() - 1; i >= 0; i--){
-		if(primes[i] && is_pandig(i)){
+		if(primes[i] && is_pandig(i)) {
 			std::cout << i << std::endl;
 			return 0;
 		}
