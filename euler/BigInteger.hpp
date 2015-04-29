@@ -190,7 +190,7 @@ BigInteger BigInteger::reverse() const {
 	return BigInteger(tmp);
 }
 
-std::ostream& operator<< (std::ostream &out, BigInteger &x){
+std::ostream& operator<< (std::ostream &out, BigInteger const& x){
 	out << x.to_string();
     return out;
 }

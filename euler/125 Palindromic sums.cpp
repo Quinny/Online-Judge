@@ -1,6 +1,7 @@
 #include <iostream>
 #include <set>
 #include "BigInteger.hpp"
+#include <numeric>
 
 long reverse(long);
 bool palindrome(long);
@@ -10,16 +11,17 @@ int main(){
 	long lim = 100000000;
 	for(int i = 1; i * i < lim; i++){
 		long tmp = i * i;
-		for(int j = i + 1; j * j < lim; j++){
+		for (int j = i + 1; j * j < lim; j++) {
 			tmp += j * j;
-			if(tmp > lim) break;
-			if(palindrome(tmp)) s.insert(tmp);
+			if(tmp > lim)
+                break;
+			if(palindrome(tmp))
+                s.insert(tmp);
 		}
 	}
-	BigInteger ans;
-	for(auto i : s)
-		ans += i;
-	std::cout << ans << std::endl;
+    std::cout <<
+        std::accumulate(s.begin(), s.end(), 0UL)
+    << std::endl;
 	return 0;
 }
 

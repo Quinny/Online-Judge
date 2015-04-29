@@ -2,7 +2,7 @@
 #include "PrimeSieve.hpp"
 #define MAX 2000000
 
-int consec_primes(int, int, pe::PrimeSieve<MAX>&);
+int consec_primes(int, int, pe::PrimeSieve<MAX> const&);
 
 int main(){
 	pe::PrimeSieve<MAX> primes;
@@ -20,10 +20,10 @@ int main(){
 	return 0;
 }
 
-int consec_primes(int a, int b, pe::PrimeSieve<MAX>& p){
+int consec_primes(int a, int b, pe::PrimeSieve<MAX> const& p){
 	long n = 0;
 	long c = 0;
-	while(((n * n) + (a * n) + b) > 0 && p[(n * n) + (a * n) + b]){
+	while(((n * n) + (a * n) + b) > 0 && p[(n * n) + (a * n) + b]) {
 		c++;
 		n++;
 	}
